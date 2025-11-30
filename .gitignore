@@ -5,6 +5,10 @@
 .nitro
 .cache
 dist
+.vercel
+
+# Generated files
+public/api
 
 # Node dependencies
 node_modules
