@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxtjs/mdc'],
   app: {
     head: {
-      title: '我的技术博客',
+      title: '大路的博客',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -16,8 +16,5 @@ export default defineNuxtConfig({
       ]
     }
   },
-  css: ['~/assets/css/markdown.css'],
-  nitro: {
-    preset: 'vercel'
-  }
+  css: ['~/assets/css/markdown.css']
 })
