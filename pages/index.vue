@@ -2,16 +2,16 @@
     <div class="min-h-screen bg-gray-50 flex flex-col">
         <BlogHeader />
 
-        <main class="flex-1 max-w-5xl mx-auto px-4 py-12 w-full">
+        <main class="flex-1 max-w-7xl mx-auto px-4 py-12 w-full">
             <div class="mb-8">
                 <h2 class="text-3xl font-bold text-gray-900 mb-2">最新文章</h2>
                 <p class="text-gray-600">探索最新的技术文章和教程</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <article v-for="article in articles" :key="article.slug"
                     class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                    <NuxtLink :to="`/blog/${article.slug}`" class="block">
+                    <NuxtLink :to="`/blog/${encodeURIComponent(article.slug)}`" class="block">
                         <div class="p-6">
                             <div class="flex items-center gap-2 mb-3">
                                 <span v-for="tag in article.tags" :key="tag"
@@ -45,13 +45,13 @@
 
 <script setup>
 const { getArticles } = useBlog()
-const articles = getArticles()
+const { data: articles } = await useAsyncData('articles', getArticles)
 
 const formatDate = (date) => {
-    return new Date(date).toLocaleDateString('zh-CN', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    })
+  return new Date(date).toLocaleDateString('zh-CN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
 }
 </script>

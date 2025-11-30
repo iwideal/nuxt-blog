@@ -34,7 +34,7 @@
 
         <div class="p-8 md:p-12">
           <div class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 prose-strong:text-gray-900 prose-code:text-purple-600 prose-pre:bg-gray-900">
-            <MDC :value="article.content" />
+            <MDC :value="article?.content" />
           </div>
         </div>
       </article>
@@ -47,10 +47,13 @@
 <script setup>
 const route = useRoute()
 const { getArticle } = useBlog()
-const slug = Array.isArray(route.params.slug) ? route.params.slug.join('/') : route.params.slug
-const article = getArticle(slug)
+const slug = Array.isArray(route.params.slug) 
+  ? decodeURIComponent(route.params.slug.join('/'))
+  : decodeURIComponent(String(route.params.slug))
 
-if (!article) {
+const { data: article } = await useAsyncData(`article-${slug}`, () => getArticle(slug))
+
+if (!article.value) {
   throw createError({ statusCode: 404, message: '文章未找到' })
 }
 
