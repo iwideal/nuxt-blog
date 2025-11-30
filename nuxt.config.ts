@@ -16,8 +16,5 @@ export default defineNuxtConfig({
       ]
     }
   },
-  css: ['~/assets/css/markdown.css'],
-  nitro: {
-    preset: 'vercel'
-  }
+  css: ['~/assets/css/markdown.css']
 })
