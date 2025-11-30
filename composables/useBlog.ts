@@ -1,30 +1,12 @@
 export const useBlog = () => {
   const getArticles = async () => {
-    try {
-      const { data, error } = await useFetch('/api/articles.json')
-      if (error.value) {
-        console.error('Error fetching articles:', error.value)
-        return []
-      }
-      return data.value || []
-    } catch (err) {
-      console.error('Error in getArticles:', err)
-      return []
-    }
+    const { data } = await useFetch('/api/articles')
+    return data.value || []
   }
 
   const getArticle = async (slug: string) => {
-    try {
-      const { data, error } = await useFetch(`/api/articles/${slug}.json`)
-      if (error.value) {
-        console.error('Error fetching article:', error.value)
-        return null
-      }
-      return data.value
-    } catch (err) {
-      console.error('Error in getArticle:', err)
-      return null
-    }
+    const { data } = await useFetch(`/api/articles/${slug}`)
+    return data.value
   }
 
   return {
