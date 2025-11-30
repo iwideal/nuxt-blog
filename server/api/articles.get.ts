@@ -28,7 +28,6 @@ export default defineEventHandler(() => {
     return articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   } catch (error) {
     console.error('Error reading articles:', error)
-    console.error('Error details:', error)
     return []
   }
 })
