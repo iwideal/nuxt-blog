@@ -18,19 +18,6 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/css/markdown.css'],
   nitro: {
-    preset: 'vercel',
-    serverAssets: [
-      {
-        baseName: 'content',
-        dir: './content'
-      }
-    ],
-    publicAssets: [
-      {
-        baseURL: 'content',
-        dir: 'content',
-        maxAge: 60 * 60 * 24 * 7 // 7 days
-      }
-    ]
+    preset: 'vercel'
   }
 })
