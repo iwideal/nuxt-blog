@@ -1,0 +1,17 @@
+{
+    "version": 3,
+    "buildCommand": "nuxt build",
+    "outputDirectory": ".output",
+    "devCommand": "nuxt dev",
+    "installCommand": "npm install",
+    "functions": {
+        "**/*.js": {
+            "maxDuration": 30
+        }
+    },
+    "includeFiles": [
+        "content/**/*",
+        "public/**/*",
+        "assets/**/*"
+    ]
+}
