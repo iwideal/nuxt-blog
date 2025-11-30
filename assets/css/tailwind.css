@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-gray-50;
+}
+
+@layer components {
+    .btn {
+        @apply bg-green-500 text-white font-bold py-2 px-4 rounded;
+    }
+
+    .card {
+        @apply bg-white rounded shadow-md p-3 h-full;
+    }
+}
+/* 适用于Chrome、Edge、Safari等WebKit内核浏览器 */
+::-webkit-scrollbar {
+    width: 4px;
+    /* 垂直滚动条宽度 */
+    height: 8px;
+    /* 水平滚动条高度 */
+}
+
+::-webkit-scrollbar-track {
+    background: white;
+    /* 滚动条轨道颜色 */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #03a0ee;
+    /* 滚动条滑块颜色 */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+    /* 鼠标悬停时滑块颜色 */
+}

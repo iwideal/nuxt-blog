@@ -10,16 +10,16 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <article v-for="article in articles" :key="article.slug"
-                    class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-green-500/10 hover:border-green-500/30">
                     <NuxtLink :to="`/blog/${encodeURIComponent(article.slug)}`" class="block">
                         <div class="p-6">
                             <div class="flex items-center gap-2 mb-3">
                                 <span v-for="tag in article.tags" :key="tag"
-                                    class="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs rounded-full">
+                                    class="px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white text-xs rounded-full shadow-sm">
                                     {{ tag }}
                                 </span>
                             </div>
-                            <h2 class="text-2xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-3 hover:text-green-600 transition">
                                 {{ article.title }}
                             </h2>
                             <p class="text-gray-600 mb-4 line-clamp-2">{{ article.description }}</p>
@@ -31,7 +31,7 @@
                                     </svg>
                                     {{ formatDate(article.date) }}
                                 </span>
-                                <span class="text-blue-600 font-medium">阅读更多 →</span>
+                                <span class="text-green-600 font-medium">阅读更多 →</span>
                             </div>
                         </div>
                     </NuxtLink>
@@ -40,6 +40,7 @@
         </main>
 
         <BlogFooter />
+        <BackToTop />
     </div>
 </template>
 
