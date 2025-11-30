@@ -1,6 +1,6 @@
 <template>
   <header class="bg-gradient-to-r from-gray-900 to-black border-b border-green-500/20 shadow-lg">
-    <div class="max-w-6xl mx-auto px-4 py-4">
+    <div class="max-w-7xl mx-auto px-4 py-4">
       <div class="flex items-center justify-between">
         <!-- 左侧：Logo 和标题 -->
         <NuxtLink to="/" class="flex items-center gap-3 hover:opacity-80 transition">
