@@ -1,13 +1,20 @@
-import { readFile } from 'node:fs/promises'
-import { join } from 'node:path'
 import matter from 'gray-matter'
 
 export default defineEventHandler(async (event) => {
   try {
     const slug = decodeURIComponent(getRouterParam(event, 'slug') || '')
-    const filePath = join(process.cwd(), 'content', `${slug}.md`)
+    
+    // 使用 Nitro 的 serverAssets
+    const storage = useStorage('assets:content')
+    const fileContent = await storage.getItem(`${slug}.md`) as string
+    
+    if (!fileContent) {
+      throw createError({
+        statusCode: 404,
+        message: '文章未找到'
+      })
+    }
 
-    const fileContent = await readFile(filePath, 'utf-8')
     const { data, content } = matter(fileContent)
 
     return {

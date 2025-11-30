@@ -7,9 +7,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "prebuild": "cp -r content .vercel/output || true",
-    "vercel-build": "npm run prebuild && npm run build"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@nuxtjs/mdc": "^0.10.0",

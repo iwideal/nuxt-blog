@@ -1,27 +1,27 @@
-import { readdir, readFile } from 'node:fs/promises'
-import { join } from 'node:path'
 import matter from 'gray-matter'
 
 export default defineEventHandler(async () => {
   try {
-    const contentDir = join(process.cwd(), 'content')
-    const files = await readdir(contentDir)
-    const mdFiles = files.filter(file => file.endsWith('.md'))
-
+    // 使用 Nitro 的 serverAssets
+    const storage = useStorage('assets:content')
+    const keys = await storage.getKeys()
+    
     const articles = await Promise.all(
-      mdFiles.map(async (file) => {
-        const filePath = join(contentDir, file)
-        const fileContent = await readFile(filePath, 'utf-8')
-        const { data } = matter(fileContent)
+      keys
+        .filter(key => key.endsWith('.md'))
+        .map(async (key) => {
+          const fileContent = await storage.getItem(key) as string
+          const { data } = matter(fileContent)
+          const slug = key.replace('.md', '')
 
-        return {
-          slug: file.replace('.md', ''),
-          title: data.title,
-          description: data.description,
-          date: data.date,
-          tags: data.tags
-        }
-      })
+          return {
+            slug,
+            title: data.title,
+            description: data.description,
+            date: data.date,
+            tags: data.tags
+          }
+        })
     )
 
     return articles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
