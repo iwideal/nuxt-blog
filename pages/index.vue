@@ -8,7 +8,11 @@
                 <p class="text-gray-600">探索最新的技术文章和教程</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div v-if="!articles || articles.length === 0" class="text-center py-12">
+                <p class="text-gray-500">暂无文章</p>
+            </div>
+
+            <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <article v-for="article in articles" :key="article.slug"
                     class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-green-500/10 hover:border-green-500/30">
                     <NuxtLink :to="`/blog/${encodeURIComponent(article.slug)}`" class="block">
@@ -47,6 +51,9 @@
 <script setup>
 const { getArticles } = useBlog()
 const { data: articles } = await useAsyncData('articles', getArticles)
+
+// 添加调试信息
+console.log('Articles loaded:', articles.value)
 
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString('zh-CN', {

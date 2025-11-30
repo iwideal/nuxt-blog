@@ -4,9 +4,35 @@ import matter from 'gray-matter'
 
 export default defineEventHandler(async () => {
   try {
-    const contentDir = join(process.cwd(), 'content')
-    const files = await readdir(contentDir)
+    // 尝试多个可能的路径
+    const possiblePaths = [
+      join(process.cwd(), 'content'),
+      join(process.cwd(), '.output', 'server', 'content'),
+      join(process.cwd(), 'server', 'content')
+    ]
+
+    let contentDir = possiblePaths[0]
+    let files: string[] = []
+
+    for (const path of possiblePaths) {
+      try {
+        files = await readdir(path)
+        contentDir = path
+        console.log('Found content directory at:', path)
+        break
+      } catch (e) {
+        console.log('Content directory not found at:', path)
+        continue
+      }
+    }
+
+    if (files.length === 0) {
+      console.error('No content directory found')
+      return []
+    }
+
     const mdFiles = files.filter(file => file.endsWith('.md'))
+    console.log('Found markdown files:', mdFiles)
 
     const articles = await Promise.all(
       mdFiles.map(async (file) => {

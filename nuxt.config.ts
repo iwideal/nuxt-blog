@@ -18,6 +18,13 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/css/markdown.css'],
   nitro: {
-    preset: 'vercel'
+    preset: 'vercel',
+    serveStatic: true,
+    publicAssets: [
+      {
+        baseURL: '/content',
+        dir: 'content'
+      }
+    ]
   }
 })

@@ -1,5 +1,6 @@
 {
   "buildCommand": "pnpm run build",
   "installCommand": "pnpm install",
-  "framework": "nuxtjs"
+  "framework": "nuxtjs",
+  "outputDirectory": ".output/public"
 }
