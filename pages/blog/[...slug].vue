@@ -51,9 +51,9 @@ const slug = Array.isArray(route.params.slug)
     ? decodeURIComponent(route.params.slug.join('/'))
     : decodeURIComponent(String(route.params.slug))
 
-const { data: article } = await useAsyncData(`article-${slug}`, () => getArticle(slug))
+const article = getArticle(slug)
 
-if (!article.value) {
+if (!article) {
     throw createError({ statusCode: 404, message: '文章未找到' })
 }
 

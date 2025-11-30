@@ -1,12 +1,14 @@
+import { articlesData } from '~/articles.data'
+
 export const useBlog = () => {
-  const getArticles = async () => {
-    const { data } = await useFetch('/api/articles')
-    return data.value || []
+  const getArticles = () => {
+    return articlesData
+      .map(({ content, ...article }) => article)
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   }
 
-  const getArticle = async (slug: string) => {
-    const { data } = await useFetch(`/api/articles/${slug}`)
-    return data.value
+  const getArticle = (slug: string) => {
+    return articlesData.find(article => article.slug === slug) || null
   }
 
   return {

@@ -3,9 +3,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
+    "build": "node scripts/generate-data.js && nuxt generate",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "node scripts/generate-data.js && nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },

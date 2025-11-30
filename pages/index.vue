@@ -45,7 +45,7 @@
 
 <script setup>
 const { getArticles } = useBlog()
-const { data: articles } = await useAsyncData('articles', getArticles)
+const articles = getArticles()
 
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString('zh-CN', {

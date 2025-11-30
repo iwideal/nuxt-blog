@@ -19,12 +19,24 @@ export default defineNuxtConfig({
   css: ['~/assets/css/markdown.css'],
   nitro: {
     preset: 'vercel',
-    publicAssets: [
-      {
-        baseURL: 'content',
-        dir: 'public/content',
-        maxAge: 0
-      }
-    ]
+    prerender: {
+      crawlLinks: true,
+      routes: ['/']
+    }
+  },
+  hooks: {
+    'nitro:config'(nitroConfig) {
+      // 动态生成所有文章路由
+      const { readdirSync } = require('fs')
+      const { join } = require('path')
+      
+      const contentDir = join(process.cwd(), 'content')
+      const files = readdirSync(contentDir).filter((file: string) => file.endsWith('.md'))
+      const routes = files.map((file: string) => `/blog/${file.replace('.md', '')}`)
+      
+      nitroConfig.prerender = nitroConfig.prerender || {}
+      nitroConfig.prerender.routes = nitroConfig.prerender.routes || []
+      nitroConfig.prerender.routes.push(...routes, '/about')
+    }
   }
 })

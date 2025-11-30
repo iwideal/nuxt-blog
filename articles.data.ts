@@ -1,4 +1,5 @@
-[
+// 此文件在构建时自动生成
+export const articlesData = [
   {
     "slug": "Caddy使用教程",
     "title": "Caddy使用教程",
