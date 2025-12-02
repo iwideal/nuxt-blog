@@ -17,13 +17,6 @@ export default defineNuxtConfig({
     }
   },
   css: ['~/assets/css/markdown.css'],
-  nitro: {
-    preset: 'vercel',
-    prerender: {
-      crawlLinks: true,
-      routes: ['/']
-    }
-  },
   hooks: {
     'nitro:config'(nitroConfig) {
       // 动态生成所有文章路由

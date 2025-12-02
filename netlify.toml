@@ -1,6 +1,0 @@
-[build]
-  command = "pnpm run generate"
-  publish = ".vercel/output/static"
-
-[build.environment]
-  NODE_VERSION = "18"
