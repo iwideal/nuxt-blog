@@ -16,13 +16,13 @@
         <div>
           <h3 class="text-green-400 font-bold mb-3">联系方式</h3>
           <ul class="space-y-2 text-sm">
-            <li>GitHub: @yourname</li>
-            <li>Email: your@email.com</li>
+            <li>GitHub: @iwideal</li>
+            <li>Email: iwideal@outlook.com</li>
           </ul>
         </div>
       </div>
       <div class="border-t border-green-500/20 mt-8 pt-6 text-center text-sm">
-        <p>&copy; 2024 我的博客. All rights reserved.</p>
+        <p>&copy; 2025 大路的博客. All rights reserved.</p>
       </div>
     </div>
   </footer>
