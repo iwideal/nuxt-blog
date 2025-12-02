@@ -10,10 +10,10 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 <article v-for="article in articles" :key="article.slug"
-                    class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-green-500/10 hover:border-green-500/30">
+                    class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-blue-500/10 hover:border-blue-500/30">
                     <NuxtLink :to="`/blog/${encodeURIComponent(article.slug)}`" class="block">
                         <div class="p-6 flex flex-col h-full">
-                            <h2 class="text-2xl font-bold text-gray-900 mb-3 hover:text-green-600 transition">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition">
                                 {{ article.title }}
                             </h2>
                             <p class="text-gray-600 mb-4 line-clamp-2 flex-1">{{ article.description }}</p>

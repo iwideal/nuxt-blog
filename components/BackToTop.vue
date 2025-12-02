@@ -3,7 +3,7 @@
     <button
       v-show="showButton"
       @click="scrollToTop"
-      class="fixed bottom-8 right-8 z-50 p-3 bg-gradient-to-br from-gray-800 to-black text-green-400 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 group"
+      class="fixed bottom-8 right-8 z-50 p-3 bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 group"
       aria-label="返回顶部"
     >
       <svg
