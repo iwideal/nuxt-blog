@@ -144,6 +144,8 @@ sudo apt install npm
 
 sudo apt install nginx
 
+sudo apt install mysql-server
+
 sudo apt install docker.io
 
 sudo apt install openssh-server
